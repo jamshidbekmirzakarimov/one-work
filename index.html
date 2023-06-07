@@ -192,7 +192,7 @@
         gap: 10px;
       }
       #copy {
-        width: 48px;
+        width: 55px;
         height: 48px;
         position: relative;
         background-color: #482ff7;
@@ -225,7 +225,7 @@
         transform: translateY(-10px);
         transition: all 300ms ease;
         left: -300px;
-        top: -100px;
+        top: -20px;
       }
       #copy:hover:before,
       #copy:hover:after {
@@ -244,6 +244,13 @@
         font-size: 16px;
         line-height: 24px;
         color: #1a1a1a;
+      }
+
+      .uzb-title{
+        font-size: 17px;
+        color: #666666;
+        text-align: center;
+        margin-top: 20px;
       }
 
       @media only screen and (max-width: 500px) {
@@ -383,6 +390,7 @@
             <span class="btn-end-subtitle">Code</span> sizga tegishli bo’lmasa
             <span class="btn-end-subtitle">foydalanmang</span>
           </p>
+          <h5 class="uzb-title">Made with 💚 in Uzbekistan</h5>
         </div>
       </div>
     </div>
@@ -394,11 +402,30 @@
       const copyText = (e) => {
         window.getSelection().selectAllChildren(textElement);
         document.execCommand("copy");
-        e.target.setAttribute("tooltip", "Copied!");
+        copyButton.innerHTML = "Copied";
+        setTimeout(() => {
+          copyButton.innerHTML = `    <svg
+                width="22"
+                height="26"
+                viewBox="0 0 22 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.5857 5.19739H2.97442C1.88491 5.19739 1 6.04768 1 7.09458V23.1028C1 24.1497 1.88491 25 2.97442 25H14.5857C15.6752 25 16.5601 24.1497 16.5601 23.1028V7.09458C16.555 6.04768 15.6701 5.19739 14.5857 5.19739ZM15.1739 23.0979C15.1739 23.4124 14.9079 23.668 14.5806 23.668H2.96931C2.64194 23.668 2.37596 23.4124 2.37596 23.0979V7.09458C2.37596 6.78002 2.64194 6.52444 2.96931 6.52444H14.5806C14.9079 6.52444 15.1739 6.78002 15.1739 7.09458V23.0979Z"
+                  fill="white"
+                  stroke="white"
+                />
+                <path
+                  d="M19.0256 1H7.41437C6.32485 1 5.43994 1.8503 5.43994 2.89719C5.43994 3.26582 5.74685 3.56072 6.13048 3.56072C6.51411 3.56072 6.82102 3.26582 6.82102 2.89719C6.82102 2.58263 7.087 2.32705 7.41437 2.32705H19.0256C19.353 2.32705 19.619 2.58263 19.619 2.89719V18.9054C19.619 19.2199 19.353 19.4755 19.0256 19.4755C18.642 19.4755 18.3351 19.7704 18.3351 20.1391C18.3351 20.5077 18.642 20.8026 19.0256 20.8026C20.1151 20.8026 21 19.9523 21 18.9054V2.89719C21 1.8503 20.1151 1 19.0256 1Z"
+                  fill="white"
+                  stroke="white"
+                />
+              </svg>`;
+        }, 1000);
       };
 
       copyButton.addEventListener("click", (e) => copyText(e));
-      copyButton.addEventListener("mouseover", (e) => resetTooltip(e));
     </script>
   </body>
 </html>
